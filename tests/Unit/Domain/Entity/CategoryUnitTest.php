@@ -10,7 +10,6 @@ class CategoryUnitTest extends TestCase
     public function testAttributes()
     {
         $category = new Category(
-            id: '1',
             name: 'New Cat',
             description: 'New desc',
             isActive: true
@@ -19,6 +18,5 @@ class CategoryUnitTest extends TestCase
         $this->assertEquals('New Cat', $category->name);
         $this->assertEquals('New desc', $category->description);
         $this->assertEquals(true, $category->isActive);
-
     }
 }
