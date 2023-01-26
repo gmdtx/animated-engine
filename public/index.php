@@ -2,7 +2,7 @@
 
 require_once '../vendor/autoload.php';
 
-use Core\Test;
+use Core\Hello;
 
-$test = new Test();
-var_dump($test->foo());
+$hello = new Hello();
+var_dump($hello->foo());
