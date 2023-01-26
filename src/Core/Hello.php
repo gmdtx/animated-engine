@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Test
+class Hello
 {
     public function foo()
     {
