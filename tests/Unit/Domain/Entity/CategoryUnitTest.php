@@ -3,7 +3,7 @@
 namespace Tests\Unit\Domain\Entity;
 
 use Core\Domain\Entity\Category;
-use Core\Domain\Exceptions\EntityValidationException;
+use Core\Domain\Exception\EntityValidationException;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 
@@ -63,7 +63,7 @@ class CategoryUnitTest extends TestCase
         $this->assertEquals('New desc', $category->description);
     }
 
-    public function testExcetionName()
+    public function testExceptionName()
     {
         try {
             $category = new Category(

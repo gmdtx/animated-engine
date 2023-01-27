@@ -3,7 +3,7 @@
 namespace Core\Domain\Entity;
 
 use Core\Domain\Entity\Traits\MagicMethodTrait;
-use Core\Domain\Exceptions\EntityValidationException;
+use Core\Domain\Exception\EntityValidationException;
 
 class Category
 {
