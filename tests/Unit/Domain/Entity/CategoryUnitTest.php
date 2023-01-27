@@ -3,7 +3,9 @@
 namespace Tests\Unit\Domain\Entity;
 
 use Core\Domain\Entity\Category;
+use Core\Domain\Exceptions\EntityValidationException;
 use PHPUnit\Framework\TestCase;
+use Throwable;
 
 class CategoryUnitTest extends TestCase
 {
@@ -59,5 +61,18 @@ class CategoryUnitTest extends TestCase
         );
         $this->assertEquals('New Name', $category->name);
         $this->assertEquals('New desc', $category->description);
+    }
+
+    public function testExcetionName()
+    {
+        try {
+            $category = new Category(
+                name: 'Ne',
+                description: 'New desc',
+            );
+            $this->assertTrue(false);
+        } catch (Throwable $th) {
+            $this->assertInstanceOf(EntityValidationException::class, $th);
+        }
     }
 }
