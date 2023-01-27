@@ -12,19 +12,19 @@ class CategoryUnitTest extends TestCase
     public function testAttributes()
     {
         $category = new Category(
-            name: 'New Cat',
-            description: 'New desc',
+            name: "New Cat",
+            description: "New desc",
             isActive: true
         );
-        $this->assertEquals('New Cat', $category->name);
-        $this->assertEquals('New desc', $category->description);
+        $this->assertEquals("New Cat", $category->name);
+        $this->assertEquals("New desc", $category->description);
         $this->assertEquals(true, $category->isActive);
     }
 
     public function testActivated()
     {
         $category = new Category(
-            name: 'New Cat',
+            name: "New Cat",
             isActive: false
         );
         $this->assertFalse($category->isActive);
@@ -36,7 +36,7 @@ class CategoryUnitTest extends TestCase
     public function testDeactivated()
     {
         $category = new Category(
-            name: 'New Cat'
+            name: "New Cat"
         );
         $this->assertTrue($category->isActive);
 
@@ -46,29 +46,29 @@ class CategoryUnitTest extends TestCase
 
     public function testUpdate()
     {
-        $uuid = 'uuid.value';
+        $uuid = "uuid.value";
 
         $category = new Category(
             id: $uuid,
-            name: 'New Cat',
-            description: 'New desc',
+            name: "New Cat",
+            description: "New desc",
             isActive: true
         );
 
         $category->update(
-            name: 'New Name',
-            description: 'New desc'
+            name: "New Name",
+            description: "New desc"
         );
-        $this->assertEquals('New Name', $category->name);
-        $this->assertEquals('New desc', $category->description);
+        $this->assertEquals("New Name", $category->name);
+        $this->assertEquals("New desc", $category->description);
     }
 
     public function testExceptionName()
     {
         try {
             $category = new Category(
-                name: 'Ne',
-                description: 'New desc',
+                name: "N",
+                description: "New desc",
             );
             $this->assertTrue(false);
         } catch (Throwable $th) {
