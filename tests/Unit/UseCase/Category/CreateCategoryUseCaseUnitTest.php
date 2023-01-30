@@ -1,24 +1,32 @@
 <?php
 
-namespace Tests\Unit\UseCase\Category;
+namespace Unit\UseCase\Category;
 
-use Core\Domain\Entity\Category;
+use Core\Domain\Repository\CategoryRepositoryInterface;
+use Core\UseCase\Category\CreateCategoryUseCase;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
-use Ramsey\Uuid\Uuid;
 use stdClass;
 
 class CreateCategoryUseCaseUnitTest extends MockeryTestCase
 {
     public function testCreateNewCategory()
     {
-        $uuid = (string) Uuid::uuid4()->toString();
-        $categoryName = 'name cat';
+//        $categoryId = '1';
+//        $categoryName = 'Cat Name';
+//        $mockEntity = Mockery::mock(Category::class, [
+//            $categoryId,
+//            $categoryName
+//        ]);
 
-        $mockEntity = Mockery::mock(Category::class, [
-            $uuid,
-            $categoryName,
-        ]);
-        $mockEntity->shouldReceive('id')->andReturn($uuid);
+        $mockRepo = Mockery::mock(stdClass::class, CategoryRepositoryInterface::class);
+        $mockRepo->shouldReceive('insert'); //->andReturn($mockEntity);
+
+        $useCase = new CreateCategoryUseCase($mockRepo);
+        $useCase->execute();
+
+        $this->assertTrue(true);
+
+        Mockery::close();
     }
 }
