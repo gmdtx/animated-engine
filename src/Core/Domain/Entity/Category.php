@@ -3,14 +3,19 @@
 namespace Core\Domain\Entity;
 
 use Core\Domain\Entity\Traits\MagicMethodTrait;
+use Core\Domain\Exception\EntityValidationException;
 use Core\Domain\Validation\DomainValidation;
 use Core\Domain\ValueObject\Uuid;
 use DateTime;
+use Exception;
 
 class Category
 {
     use MagicMethodTrait;
 
+    /**
+     * @throws Exception
+     */
     public function __construct(
         protected Uuid|string $id = "",
         protected string $name = "",
@@ -34,7 +39,10 @@ class Category
         $this->isActive = false;
     }
 
-    public function update(string $name, string $description = "")
+    /**
+     * @throws EntityValidationException
+     */
+    public function update(string $name, string $description = ""): void
     {
         $this->name = $name;
         $this->description = $description;
@@ -42,7 +50,10 @@ class Category
         $this->validate();
     }
 
-    public function validate()
+    /**
+     * @throws EntityValidationException
+     */
+    private function validate(): void
     {
         DomainValidation::strMaxLength($this->name);
         DomainValidation::strMinLength($this->name);
