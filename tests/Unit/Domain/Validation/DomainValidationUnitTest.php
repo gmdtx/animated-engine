@@ -1,6 +1,6 @@
 <?php 
 
-namespace Tests\Unit\Domain\Validation;
+namespace Unit\Domain\Validation;
 
 use Core\Domain\Exception\EntityValidationException;
 use Core\Domain\Validation\DomainValidation;
@@ -15,7 +15,7 @@ class DomainValidationUnitTest extends TestCase
             $value = "";
             DomainValidation::notNull($value);
 
-            $this->assertTrue(false);
+            $this->fail();
         } catch (Throwable $th) {
             $this->assertInstanceOf(EntityValidationException::class, $th);
         }
@@ -27,7 +27,7 @@ class DomainValidationUnitTest extends TestCase
             $value = "";
             DomainValidation::notNull($value, "Custom message error");
 
-            $this->assertTrue(false);
+            $this->fail();
         } catch (Throwable $th) {
             $this->assertInstanceOf(EntityValidationException::class, $th);
         }
@@ -39,7 +39,7 @@ class DomainValidationUnitTest extends TestCase
             $value = "Test";
             DomainValidation::strMaxLength($value, 3, "Custom message");
 
-            $this->assertTrue(false);
+            $this->fail();
         } catch (Throwable $th) {
             $this->assertInstanceOf(EntityValidationException::class, $th, "Custom message");
         }
@@ -51,7 +51,7 @@ class DomainValidationUnitTest extends TestCase
             $value = "Test";
             DomainValidation::strMinLength($value, 8, "Custom message");
 
-            $this->assertTrue(false);
+            $this->fail();
         } catch (Throwable $th) {
             $this->assertInstanceOf(EntityValidationException::class, $th, "Custom message");
         }
@@ -63,7 +63,7 @@ class DomainValidationUnitTest extends TestCase
             $value = "Test";
             DomainValidation::strCanNullAndMaxLength($value, 3, "Custom message");
 
-            $this->assertTrue(false);
+            $this->fail();
         } catch (Throwable $th) {
             $this->assertInstanceOf(EntityValidationException::class, $th, "Custom message");
         }
